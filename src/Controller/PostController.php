@@ -12,16 +12,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/post")
+ * @Route("/admin/post")
  */
 class PostController extends AbstractController
 {
     /**
-     * @Route("/", name="post_index", methods={"GET"})
+     * @Route("/create", name="post_index", methods={"GET"})
      */
     public function index(PostRepository $postRepository): Response
     {
-        return $this->render('post/index.html.twig', [
+        return $this->render('admin/post/index.html.twig', [
             'posts' => $postRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class PostController extends AbstractController
             return $this->redirectToRoute('post_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('post/new.html.twig', [
+        return $this->renderForm('admin/post/new.html.twig', [
             'post' => $post,
             'form' => $form,
         ]);
@@ -53,7 +53,7 @@ class PostController extends AbstractController
      */
     public function show(Post $post): Response
     {
-        return $this->render('post/show.html.twig', [
+        return $this->render('admin/post/show.html.twig', [
             'post' => $post,
         ]);
     }
@@ -72,7 +72,7 @@ class PostController extends AbstractController
             return $this->redirectToRoute('post_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('post/edit.html.twig', [
+        return $this->renderForm('admin/post/edit.html.twig', [
             'post' => $post,
             'form' => $form,
         ]);

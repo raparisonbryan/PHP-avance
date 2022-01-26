@@ -23,7 +23,7 @@ class Comment
     private $username;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $content;
 
@@ -61,12 +61,12 @@ class Comment
         return $this;
     }
 
-    public function getContent(): ?\DateTimeInterface
+    public function getContent(): ?string
     {
         return $this->content;
     }
 
-    public function setContent(?\DateTimeInterface $content): self
+    public function setContent(?string $content): self
     {
         $this->content = $content;
 

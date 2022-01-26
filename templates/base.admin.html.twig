@@ -1,0 +1,18 @@
+{% extends 'user/base.html.twig' %}
+
+{% block title %}Page admin{% endblock %}
+{% block header %}
+    <header>
+        <nav class="navbar">
+            <div class="navbar__left">
+                <h1><a href="{{ path('home') }}">Faudra tif hair</a></h1>
+            </div>
+        </nav>
+    </header>
+    <ul>
+        <li><a href="{{ path('post_index') }}">Liste des posts</a></li>
+        <li><a href="{{ path('comment_index') }}">Liste des commentaires</a></li>
+        <li><a href="{{ path('category_index') }}">Liste des catégories</a></li>
+    </ul>
+    
+{% endblock %}

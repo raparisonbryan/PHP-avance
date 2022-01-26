@@ -3,12 +3,12 @@
 namespace App\Form;
 
 use App\Entity\Post;
+use App\Controller\PostController;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class PostType extends AbstractType
-{
+class PostType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -20,6 +20,7 @@ class PostType extends AbstractType
             ->add('updatedAt')
             ->add('publishedAt')
             ->add('categories')
+            ->add('save', SubmitType::class)
         ;
     }
 
