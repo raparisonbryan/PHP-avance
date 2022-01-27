@@ -8,6 +8,48 @@
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
+        <style>
+            .post {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                border: 1px solid black;
+                background-color: skyblue;
+
+            }
+            .navbar {
+                background-color: cadetblue;
+                padding: 10px;
+            }
+
+            a {
+                text-decoration: none;
+                color: black;
+                font-size: 16px;
+            }
+
+            .titre {
+                font-size: 30px;
+                font-family: Castellar;
+                margin-left: 40%;
+            }
+
+            .connexion {
+                font-size: 24px;
+                font-family: Castellar;
+            }
+
+            .menuAdmin {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .menuText {
+                list-style-type: none;
+                font-size: 24px;
+                font-family: Castellar;
+            }
+        </style>
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
@@ -18,16 +60,19 @@
             <header>
                 <nav class="navbar">
                     <div class="navbar__left">
-                        <h1><a href="{{ path('home') }}">Faudra tif hair</a></h1>
+                        <h1><a class="titre" href="{{ path('post_index_user') }}">Faudra tif hair</a></h1>
                     </div>
                     <div class="navbar__right">
-                        <a href="{{ path('homeAdmin') }}">Se connecter</a>
+                        <a class="connexion" href="{{ path('homeAdmin') }}">Se connecter</a>
                     </div>
                 </nav>
             </header>
         {% endblock %}
 
         {% block body %}
+            <div id="sidebar">
+
+            </div>
         {% endblock %}
     </body>
 </html>

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Post index{% endblock %}
+
+{% block body %}
+    <h1>Post index</h1>
+        <tbody>
+            {% for post in posts %}
+               <div class="post">
+                <tr>
+                    <p>id: <td>{{ post.id }}</td></p>
+                    <p>titre: <td>{{ post.title }}</td></p>
+                    <p>description: <td>{{ post.description }}</td> </p>
+                    <p>Contenu: <td>{{ post.content }}</td> </p>
+                    <p><td>{{ post.slug }}</td></p>
+                    <p><td>{{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}</td></p>
+                    <p><td>{{ post.updatedAt ? post.updatedAt|date('Y-m-d H:i:s') : '' }}</td></p>
+                    <p><td>{{ post.publishedAt ? post.publishedAt|date('Y-m-d H:i:s') : '' }}</td></p>
+                </tr>
+               </div>
+            {% else %}
+                <tr>
+                    <td colspan="9">no records found</td>
+                </tr>
+            {% endfor %}
+
+        {% for comment in comments %}
+            <h1>Commentaires</h1>
+            <tr>
+
+                <td>{{ comment.id }}</td>
+                <td>{{ comment.username }}</td>
+                <td>{{ comment.content  }}</td>
+                <td>{{ comment.createdAt ? comment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('comment_show_user', {'id': comment.id}) }}">Edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+
+    <a href="{{ path('comment_new') }}">Show</a>
+        </tbody>
+{% endblock %}

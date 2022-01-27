@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Post;
-use App\Controller\PostController;
+use App\Controller\admin\PostController;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
