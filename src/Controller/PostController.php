@@ -10,6 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 
 /**
  * @Route("/admin/post")
@@ -17,12 +19,32 @@ use Symfony\Component\Routing\Annotation\Route;
 class PostController extends AbstractController
 {
     /**
-     * @Route("/create", name="post_index", methods={"GET"})
+     * @Route("/", name="post_index", methods={"GET"})
      */
     public function index(PostRepository $postRepository): Response
     {
         return $this->render('admin/post/index.html.twig', [
             'posts' => $postRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/post/create/form", name="post.create.form")
+     */
+    public function createByFormBuilder(): Response
+    {
+        $post = new Post();
+
+        $form = $this->createFormBuilder($post)
+            ->add('title', TextType::class)
+            ->add('description', TextAreaType::class)
+            ->add('content', TextType::class)
+            ->add('publishedAt', DateTimeType::class)
+            ->add('save', SubmitType::class)
+            ->getForm();
+
+        return $this->render('post/index.html.twig', [
+            'form' => $form,
         ]);
     }
 
@@ -44,7 +66,7 @@ class PostController extends AbstractController
 
         return $this->renderForm('admin/post/new.html.twig', [
             'post' => $post,
-            'form' => $form,
+            'form' => $form
         ]);
     }
 
